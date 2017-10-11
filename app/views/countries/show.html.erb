@@ -1,0 +1,10 @@
+<h1>
+  <%= @country.name %> の大学
+</h1>
+<ul>
+  <% @country.abroad_universities.each do |univ| %>
+    <li>
+      <%= link_to univ.name, abroad_university_path(univ) %>
+    </li>
+  <% end %>
+</ul>

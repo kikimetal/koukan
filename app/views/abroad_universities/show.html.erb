@@ -1,0 +1,14 @@
+<h1>
+  <%= @abroad_univ.name %>
+</h1>
+<p>皆の声</p>
+<ul>
+  <% @abroad_univ.reports.each do |repo| %>
+    <li>
+      <%= link_to report_path(repo) do %>
+        <%= repo.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
