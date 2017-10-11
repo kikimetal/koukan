@@ -1,0 +1,19 @@
+.container
+  - if @report.errors.any?
+    #error_explanation
+      h3 = "#{ pluralize(@report.errors.count, "") }: 入力を確認してください。"
+      ul
+        - @report.errors.full_messages.each do |msg|
+          li = msg
+  = form_for ["admin", @report], html: { class: "form-horizontal" } do |f|
+    .form-group
+      label.col-sm-2.control-label for="InputEmail"  投稿者名
+      .col-sm-10
+        = f.text_field :name, class: "form-control", placeholder: "投稿者"
+    .form-group
+      label.col-sm-2.control-label for="InputEmail"  大学
+      .col-sm-10
+        = f.collection_select :abroad_university_id, @abroad_universities, :id, :name, {}, class: "form-control"
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-default type="submit" 作成
