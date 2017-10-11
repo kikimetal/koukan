@@ -15,3 +15,8 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+
+# __takahashi
+/__takahashi/node_modules
+/__takahashi/**/sass-css-temp
