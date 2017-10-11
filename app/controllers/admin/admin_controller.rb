@@ -1,8 +1,10 @@
 class Admin::AdminController < ApplicationController
   layout 'admin'
-  before_action :authenticate_admin_user!
+  before_action :basic_auth
 
-  def authenticate_admin_user!
-    #return redirect_to :root unless logged_in? && current_user.admin?
+  def basic_auth
+    authenticate_or_request_with_http_basic do |user,pass|
+      user == ENV["BASIC_AUTH"] && pass = ENV["BASIC_AUTH_PASSWORD"]
+    end
   end
 end

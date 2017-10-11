@@ -1,5 +1,6 @@
 class Admin::ReportsController < Admin::AdminController
-  before_action :set_report, only: [:show, :edit]
+  before_action :set_report, only: [:show, :edit, :update]
+  before_action :set_abroad_university, only: [:new, :edit]
 
   def index
     @reports = Report.all
@@ -10,7 +11,6 @@ class Admin::ReportsController < Admin::AdminController
 
   def new
     @report = Report.new
-    @abroad_universities = AbroadUniversity.all
   end
 
   def create
@@ -26,6 +26,11 @@ class Admin::ReportsController < Admin::AdminController
   end
 
   def update
+    if @report.update(target_params)
+      redirect_to admin_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,5 +46,9 @@ class Admin::ReportsController < Admin::AdminController
 
   def set_report
     @report = Report.find(params[:id])
+  end
+
+  def set_abroad_university
+    @abroad_universities = AbroadUniversity.all
   end
 end
