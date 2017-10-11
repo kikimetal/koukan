@@ -1,0 +1,2 @@
+class AbroadUniversity < ApplicationRecord
+end
