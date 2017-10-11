@@ -9,11 +9,96 @@
   </head>
 
   <body>
-    <header>
-      HEAD
-      <%= link_to "トップページ", root_path %>
-    </header>
-    <%= yield %>
-    <footer>FOOT</footer>
+    <body>
+        <div class="main-container">
+            <main class="main">
+                <%= yield %>
+
+                <nav class="context-menu">
+                    <ul>
+                        <li>英語学習法</li>
+                        <li>留学書類</li>
+                        <li>面接</li>
+                        <li>奨学金</li>
+                        <li>就活</li>
+                        <li>その他</li>
+                    </ul>
+                </nav>
+
+            </main>
+
+            <footer class="footer">
+                Copyright &copy; 交換留学.com All rights reserved.
+            </footer>
+        </div>
+
+        <header class="header">
+            <div class="top-row">
+                <span>LOGO</span>
+                <span>koukanryugaku.com</span>
+                <span>MENU</span>
+            </div>
+            <nav class="home-menu">
+                <ul>
+                    <li><%= link_to "Home", root_path %></li>
+                    <li>動画ページ</li>
+                    <li>ハウツー</li>
+                    <li>留学先</li>
+                    <li>お問い合わせ</li>
+                </ul>
+            </nav>
+        </header>
+    <style>
+      html {
+        --header-height: 140px;
+        --context-menu-width: 200px;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--header-height);
+        background: #097ab9;
+        color: white;
+      }
+
+      .header .home-menu ul li {
+        float: left;
+        padding: 1em;
+      }
+
+      .footer {
+        height: 100px;
+        background: #333;
+        color: white;
+      }
+
+      .main-container {
+        position: absolute;
+        top: var(--header-height);
+        right: 0;
+        width: calc(100% - var(--context-menu-width));
+        background: #eee;
+      }
+
+      .main-container .main {
+        box-sizing: border-box;
+        min-height: 100vh;
+        padding: 1rem;
+      }
+
+      .main-container .context-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: var(--context-menu-width);
+        min-height: calc(100vh - var(--header-height));
+        background: #00c0e2;
+        color: white;
+      }
+
+    </style>
   </body>
 </html>
