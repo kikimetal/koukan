@@ -4,7 +4,14 @@
 <ul>
   <% @country.abroad_universities.each do |univ| %>
     <li>
-      <%= link_to univ.name, abroad_university_path(univ) %>
+      <%= link_to abroad_university_path(univ) do %>
+        <p><%= univ.name %></p>
+        <br>
+        <img src="https://i0.wp.com/wondertrip.jp/img/20160802/iStock_58925298_MEDIUM.jpg?w=730" style="width: 200px; height: 100px;">
+        <p>
+          ハーバード大学は、アメリカ合衆国の研究型私立大学であり、アイビー・リーグの一校。イギリス植民地時代の1636年に設置された、アメリカ最古の高等教育機関である。 ウィキペディア
+        </p>
+      <% end %>
     </li>
   <% end %>
 </ul>
